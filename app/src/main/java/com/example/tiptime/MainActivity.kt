@@ -21,7 +21,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -189,10 +188,9 @@ fun TipTimeLayout() {
  * according to the local currency.
  * Example would be "$10.00".
  */
-@VisibleForTesting
-fun calculateTip(amount: Double,
-                 roundup: Boolean,
-                 tipPercent: Double = 15.0): String {
+private fun calculateTip(amount: Double,
+                         roundup: Boolean,
+                         tipPercent: Double = 15.0): String {
     var tip = tipPercent / 100 * amount
     if(roundup){
         tip=kotlin.math.ceil(tip)
